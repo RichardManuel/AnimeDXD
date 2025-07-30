@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
 
             } else if (itemId == R.id.bottom_book) {
-                startActivity(new Intent(MainActivity.this, BookActivity.class));
+                startActivity(new Intent(MainActivity.this, ListActivity.class));
                 overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                 finish();
                 return true;

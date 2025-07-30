@@ -16,7 +16,7 @@
             android:name=".DetailActivity"
             android:exported="false" />
         <activity
-            android:name=".BookActivity"
+            android:name=".ListActivity"
             android:exported="false" />
         <activity
             android:name=".AboutActivity"
