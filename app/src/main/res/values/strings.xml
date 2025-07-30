@@ -1,7 +1,28 @@
 <resources>
     <string name="app_name">AnimeDXD</string>
+    <string name="sacrificial_desc">I am a placeholder</string>
     <string name="list_titlePage">AnimeDXD List</string>
     <string name="list_subtitlePage">Browse and stream your favorite anime series anytime.</string>
     <string name="list_logo_desc">Logo</string>
     <string name="list_card1_title">Attack on Titan</string>
+    <string name="list_card1_genre">Action</string>
+    <string name="list_card1_desc">A post-apocalyptic anime series set in a world where humanity lives behind three massive walls to protect themselves from man-eating Titans.</string>
+    <string name="list_card2_title">Hunter x Hunter</string>
+    <string name="list_card2_genre">Adventure</string>
+    <string name="list_card2_desc">Gon Freecss aspires to become a Hunter, an exceptional being capable of greatness. With his friends and his potential, he seeks out his father, who left him when he was younger.</string>
+    <string name="list_card3_title">Gintama</string>
+    <string name="list_card3_genre">Comedy</string>
+    <string name="list_card3_desc">Gintoki Sakata, an eccentric samurai, and his odd-jobs business "Yorozuya" (万事屋) in a world where aliens have conquered Edo-period Japan.</string>
+    <string name="list_card4_title">Kaguya-sama: Love is War</string>
+    <string name="list_card4_genre">Romance</string>
+    <string name="list_card4_desc">Two brilliant and wealthy member of student council who both harbor feelings for each other but are too proud to confess.</string>
+    <string name="list_card5_title">The Witch from Mercury</string>
+    <string name="list_card5_genre">Mecha</string>
+    <string name="list_card5_desc">A compassionate girl enrolls herself in the Asticassia School of Technology in Planet Mercury that is run by the Beneritt Group that creates robotic mobile suits.</string>
+    <string name="list_card6_title">The Misfit of Demon King</string>
+    <string name="list_card6_genre">Harem</string>
+    <string name="list_card6_desc">Anos Voldigoad, the Demon King of Tyranny, who, after defeating countless enemies and tiring of war, reincarnates to find peace two millennia later.</string>
+    <string name="list_card7_title">Overlord</string>
+    <string name="list_card7_genre">Isekai</string>
+    <string name="list_card7_desc">Having full conscious in a shutdowned VR game, Ainz Ooal Gown explores the world to control it with his NPC companions.</string>
 </resources>
