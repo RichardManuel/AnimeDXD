@@ -50,17 +50,14 @@
 
     <ScrollView
         android:id="@+id/scrollView"
-        android:layout_width="412dp"
-        android:layout_height="630dp"
+        android:layout_width="481dp"
+        android:layout_height="685dp"
         android:background="@drawable/list_background"
         android:padding="12dp"
         android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.659">
+        app:layout_constraintVertical_bias="0.65">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -70,19 +67,18 @@
 
             <LinearLayout
                 android:id="@+id/card_aot"
-                android:layout_width="match_parent"
+                android:layout_width="450dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="4dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/list_card_background"
+                android:clickable="true"
                 android:clipToOutline="true"
                 android:elevation="6dp"
-                android:orientation="horizontal"
-                android:padding="12dp"
-                android:clickable="true"
                 android:focusable="true"
                 android:onClick="openDetailPageAOT"
-                >
+                android:orientation="horizontal"
+                android:padding="12dp">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
@@ -143,19 +139,18 @@
 
             <LinearLayout
                 android:id="@+id/card_hxh"
-                android:layout_width="match_parent"
+                android:layout_width="450dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="4dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/list_card_background"
+                android:clickable="true"
                 android:clipToOutline="true"
                 android:elevation="6dp"
-                android:orientation="horizontal"
-                android:padding="12dp"
-                android:clickable="true"
                 android:focusable="true"
                 android:onClick="openDetailPageHXH"
-                >
+                android:orientation="horizontal"
+                android:padding="12dp">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
@@ -215,19 +210,18 @@
 
             <LinearLayout
                 android:id="@+id/card_gintama"
-                android:layout_width="match_parent"
+                android:layout_width="450dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="4dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/list_card_background"
+                android:clickable="true"
                 android:clipToOutline="true"
                 android:elevation="6dp"
-                android:orientation="horizontal"
-                android:padding="12dp"
-                android:clickable="true"
                 android:focusable="true"
                 android:onClick="openDetailPageGintama"
-                >
+                android:orientation="horizontal"
+                android:padding="12dp">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
@@ -292,14 +286,13 @@
                 android:layout_marginHorizontal="4dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/list_card_background"
+                android:clickable="true"
                 android:clipToOutline="true"
                 android:elevation="6dp"
-                android:orientation="horizontal"
-                android:padding="12dp"
-                android:clickable="true"
                 android:focusable="true"
                 android:onClick="openDetailPageLoveIsWar"
-                >
+                android:orientation="horizontal"
+                android:padding="12dp">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
@@ -364,14 +357,13 @@
                 android:layout_marginHorizontal="4dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/list_card_background"
+                android:clickable="true"
                 android:clipToOutline="true"
                 android:elevation="6dp"
-                android:orientation="horizontal"
-                android:padding="12dp"
-                android:clickable="true"
                 android:focusable="true"
                 android:onClick="openDetailPageTheWitchFromMercury"
-                >
+                android:orientation="horizontal"
+                android:padding="12dp">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
@@ -436,14 +428,13 @@
                 android:layout_marginHorizontal="4dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/list_card_background"
+                android:clickable="true"
                 android:clipToOutline="true"
                 android:elevation="6dp"
-                android:orientation="horizontal"
-                android:padding="12dp"
-                android:clickable="true"
                 android:focusable="true"
                 android:onClick="openDetailPageTheMisfitOfDemonKing"
-                >
+                android:orientation="horizontal"
+                android:padding="12dp">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
@@ -508,14 +499,13 @@
                 android:layout_marginHorizontal="4dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/list_card_background"
+                android:clickable="true"
                 android:clipToOutline="true"
                 android:elevation="6dp"
-                android:orientation="horizontal"
-                android:padding="12dp"
-                android:clickable="true"
                 android:focusable="true"
                 android:onClick="openDetailPageOverlord"
-                >
+                android:orientation="horizontal"
+                android:padding="12dp">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="wrap_content"
