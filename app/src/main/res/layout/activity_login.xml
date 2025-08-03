@@ -11,14 +11,13 @@
     <!-- App Logo -->
     <ImageView
         android:id="@+id/logoImageView"
-        android:layout_width="220dp"
-        android:layout_height="220dp"
-        android:layout_marginTop="60dp"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/animedxdlogo"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:contentDescription="@string/app_logo_description" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- App Name -->
     <TextView
@@ -40,8 +39,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Your World of Anime"
-        android:textSize="16sp"
-        android:textColor="@android:color/darker_gray"
+        android:textSize="20sp"
+        android:textColor="@android:color/holo_green_dark"
+        android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/appNameTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -72,8 +72,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Username"
-                android:drawableStart="@drawable/person"
+                android:labelFor="@+id/usernameEditText"
+                app:drawableStartCompat="@drawable/person"
                 android:drawablePadding="8dp"
+                android:textSize="18sp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"/>
 
@@ -86,6 +88,8 @@
                 android:background="@drawable/edit_text_background"
                 android:hint="Type here..."
                 android:inputType="text"
+                android:importantForAutofill="no"
+                android:textSize="14sp"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp" />
 
@@ -97,6 +101,7 @@
                 android:textColor="@android:color/holo_red_dark"
                 android:visibility="gone"
                 tools:text="Username error message"
+                android:textSize="12sp"
                 tools:visibility="visible"/>
 
             <!-- Password Label -->
@@ -105,7 +110,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Password"
-                android:drawableStart="@drawable/ic_lock"
+                android:labelFor="@+id/passwordEditText"
+                app:drawableStartCompat="@drawable/ic_lock"
+                android:textSize="18sp"
                 android:drawablePadding="8dp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"/>
@@ -119,6 +126,8 @@
                 android:background="@drawable/edit_text_background"
                 android:hint="Type here..."
                 android:inputType="textPassword"
+                android:importantForAutofill="no"
+                android:textSize="14sp"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp" />
 
@@ -130,6 +139,7 @@
                 android:textColor="@android:color/holo_red_dark"
                 android:visibility="gone"
                 tools:text="Password error message"
+                android:textSize="12sp"
                 tools:visibility="visible"/>
 
             <!-- Login Button -->
@@ -137,16 +147,15 @@
                 android:id="@+id/loginButton"
                 android:layout_width="200dp"
                 android:layout_height="60dp"
-                android:layout_marginLeft="80dp"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="24dp"
                 android:backgroundTint="#FF6F61"
                 android:text="Log In"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
-                android:textSize="18dp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:cornerRadius="20dp" />
-
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
@@ -157,7 +166,7 @@
         android:layout_height="wrap_content"
         android:text="© 2025 AnimeDXD. All rights reserved."
         android:textColor="@android:color/black"
-        android:textSize="12dp"
+        android:textSize="12sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -1,7 +1,5 @@
 package com.example.animedxd;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -37,9 +35,9 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Memberikan efek visual saat tombol diklik
+                // Memberikan efek visual saat tombol diklik (Syarat: Change background color)
                 changeButtonColorOnClick();
-                // Memvalidasi input pengguna
+                // Memvalidasi input pengguna (Syarat: Validate fields)
                 validateInputs();
             }
         });
@@ -74,10 +72,11 @@ public class LoginActivity extends AppCompatActivity {
         usernameErrorTextView.setVisibility(View.GONE);
         passwordErrorTextView.setVisibility(View.GONE);
 
+        // Memvalidasi setiap field
         boolean isUsernameValid = validateUsername(username);
         boolean isPasswordValid = validatePassword(password);
 
-        // Jika semua validasi berhasil
+        // Jika semua validasi berhasil (Syarat: If validation is success)
         if (isUsernameValid && isPasswordValid) {
             // Pindah ke halaman utama (MainActivity)
             redirectToHomePage(username);
@@ -90,12 +89,14 @@ public class LoginActivity extends AppCompatActivity {
      * @return true jika valid, false jika tidak.
      */
     private boolean validateUsername(String username) {
+        // Syarat: Username must be filled in
         if (username.isEmpty()) {
             usernameErrorTextView.setText("Username must be filled in.");
             usernameErrorTextView.setVisibility(View.VISIBLE);
             return false;
         }
 
+        // Syarat: Length of username must be 5 - 10 characters
         if (username.length() < 5 || username.length() > 10) {
             usernameErrorTextView.setText("Length of username must be 5 - 10 characters.");
             usernameErrorTextView.setVisibility(View.VISIBLE);
@@ -111,6 +112,7 @@ public class LoginActivity extends AppCompatActivity {
      * @return true jika valid, false jika tidak.
      */
     private boolean validatePassword(String password) {
+        // Syarat: Password must be filled in
         if (password.isEmpty()) {
             passwordErrorTextView.setText("Password must be filled in.");
             passwordErrorTextView.setVisibility(View.VISIBLE);
@@ -124,10 +126,10 @@ public class LoginActivity extends AppCompatActivity {
      * @param username Username yang akan dikirim ke halaman selanjutnya.
      */
     private void redirectToHomePage(String username) {
-        // Membuat Intent untuk memulai MainActivity
+        // Syarat: Redirect to the home page
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 
-        // Menyimpan username ke dalam Intent (sebagai pengganti global variable)
+        // Syarat: Store the username to the global variable
         intent.putExtra("USERNAME", username);
 
         // Memulai activity baru
