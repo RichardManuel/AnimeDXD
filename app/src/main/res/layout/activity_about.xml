@@ -172,7 +172,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Explore a massive anime"
+                            android:text="Explore a massive anime library covering all genres and generations."
                             android:gravity="center"
                             android:textSize="12sp"/>
                     </LinearLayout>
@@ -207,7 +207,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Dive into detailed anime"
+                            android:text="Dive into detailed anime info: synopses, characters, trailers, and more."
                             android:gravity="center"
                             android:textSize="12sp"/>
                     </LinearLayout>
@@ -242,7 +242,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Stay updated with the latest"
+                            android:text="Stay updated with the latest manga releases and anime-related news."
                             android:gravity="center"
                             android:textSize="12sp"/>
                     </LinearLayout>
@@ -277,7 +277,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Securely log in and customize"
+                            android:text="Securely log in and customize your  favorites and history."
                             android:gravity="center"
                             android:textSize="12sp"/>
                     </LinearLayout>
