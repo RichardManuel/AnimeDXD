@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="20dp"
+    card_view:cardElevation="8dp"
+    android:layout_gravity="center"
+    android:layout_margin="16dp"
+    android:background="@android:color/transparent">
+
+    <LinearLayout
+        android:id="@+id/dialogBackground"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp"
+        android:background="@drawable/dialogue_background">
+
+        <!-- Header -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Write your review"
+                android:fontFamily="@font/poppins_bold"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_alignParentStart="true" />
+
+            <ImageButton
+                android:id="@+id/closeButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_close"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:layout_alignParentEnd="true" />
+
+        </RelativeLayout>
+
+        <!-- Input -->
+        <EditText
+            android:id="@+id/reviewInput"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:hint="Type here..."
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="top"
+            android:background="@drawable/edit_text_border"
+            android:padding="12dp" />
+
+        <!-- Color Options -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp">
+
+            <View
+                android:id="@+id/colorOlive"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/color_circle_olive" />
+
+            <View
+                android:id="@+id/colorCoral"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/color_circle_coral" />
+
+            <View
+                android:id="@+id/colorCream"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/color_circle_cream" />
+
+        </LinearLayout>
+
+        <!-- Post Button -->
+        <Button
+            android:id="@+id/postButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Post"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@android:color/white"
+            android:backgroundTint="#75c2b0"
+            android:paddingStart="32dp"
+            android:paddingEnd="32dp"
+            android:layout_gravity="center_horizontal" />
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
