@@ -2,7 +2,6 @@ package com.example.animedxd;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -153,9 +154,6 @@ public class DetailActivity extends AppCompatActivity {
     }
 
     private void showReviewDialog() {
-        // Salin metode showReviewDialog() dari jawaban saya sebelumnya
-        // ... (kode yang telah kita buat bersama)
-        // ...
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.dialog_post_review, null);
@@ -171,18 +169,24 @@ public class DetailActivity extends AppCompatActivity {
 
         final AlertDialog dialog = builder.create();
 
+        // ✅ Bikin background dialog transparan & sudut ikut rounded
+        if (dialog.getWindow() != null) {
+            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        }
+
         closeButton.setOnClickListener(v -> dialog.dismiss());
 
         colorOlive.setOnClickListener(v ->
-                dialogBackground.setBackgroundColor(ContextCompat.getColor(this, R.color.olive_green))
-        );
-        colorCoral.setOnClickListener(v ->
-                dialogBackground.setBackgroundColor(ContextCompat.getColor(this, R.color.coral_red))
-        );
-        colorCream.setOnClickListener(v ->
-                dialogBackground.setBackgroundColor(ContextCompat.getColor(this, R.color.cream_beige))
+                dialogBackground.setBackgroundResource(R.drawable.gradient_olive)
         );
 
+        colorCoral.setOnClickListener(v ->
+                dialogBackground.setBackgroundResource(R.drawable.gradient_coral)
+        );
+
+        colorCream.setOnClickListener(v ->
+                dialogBackground.setBackgroundResource(R.drawable.gradient_cream)
+        );
 
         postButton.setOnClickListener(v -> {
             String reviewText = reviewInput.getText().toString().trim();

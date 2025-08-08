@@ -9,21 +9,22 @@
 
     <ImageButton
         android:id="@+id/backButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:padding="8dp"
         android:src="@drawable/ic_arrow_back"
+        android:contentDescription="@string/button_desc"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageView
         android:id="@+id/animeCoverImage"
-        android:layout_width="220dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="260dp"
+        android:layout_height="370dp"
+        android:layout_marginTop="42dp"
         android:elevation="8dp"
         android:scaleType="centerCrop"
         android:src="@drawable/hxh"
@@ -38,7 +39,7 @@
         android:layout_width="342dp"
         android:layout_height="333dp"
         android:layout_marginStart="34dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="34dp"
         app:cardCornerRadius="24dp"
         app:cardElevation="4dp"
@@ -50,7 +51,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="24dp">
+            android:padding="22dp">
 
             <TextView
                 android:id="@+id/animeTitle"
@@ -133,7 +134,7 @@
                 android:paddingEnd="16dp"
                 android:text="Post a Review"
                 android:textColor="@android:color/white"
-                app:backgroundTint="#75c2b0"
+                app:backgroundTint="@drawable/button_review_selector"
                 app:cornerRadius="24dp"
                 app:icon="@drawable/ic_add"
                 app:iconGravity="end"

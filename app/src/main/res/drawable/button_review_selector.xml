@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Warna saat tombol ditekan -->
+    <item android:color="#007770" android:state_pressed="true" />
+    <!-- Warna default -->
+    <item android:color="#75c2b0" />
+</selector>

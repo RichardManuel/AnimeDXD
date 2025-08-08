@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="20dp"
-        android:background="@drawable/dialogue_background">
+        android:background="@android:color/transparent">
 
         <!-- Header -->
         <RelativeLayout
@@ -27,18 +27,21 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Write your review"
+                android:layout_marginTop="12dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="1dp"
                 android:fontFamily="@font/poppins_bold"
+                android:text="Write your review"
                 android:textSize="20sp"
-                android:textStyle="bold"
-                android:layout_alignParentStart="true" />
+                android:textStyle="bold" />
 
             <ImageButton
                 android:id="@+id/closeButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:src="@drawable/ic_close"
                 android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/button_desc"
                 android:layout_alignParentEnd="true" />
 
         </RelativeLayout>
@@ -51,7 +54,7 @@
             android:hint="Type here..."
             android:fontFamily="@font/poppins_regular"
             android:gravity="top"
-            android:background="@drawable/edit_text_border"
+            android:background="@drawable/edit_text_background"
             android:padding="12dp" />
 
         <!-- Color Options -->
