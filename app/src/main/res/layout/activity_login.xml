@@ -7,6 +7,39 @@
     android:background="@drawable/login_background"
     tools:context=".LoginActivity">
 
+    <!-- Ganti TextView lama dengan LinearLayout ini -->
+    <LinearLayout
+        android:id="@+id/errorPopupLayout"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:background="@drawable/error_popup_background"
+        android:elevation="40dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_dialog_alert"
+            app:tint="@android:color/holo_red_dark" />
+
+        <TextView
+            android:id="@+id/errorPopupTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="16sp"
+            tools:text="Error message here!" />
+
+    </LinearLayout>
+
 
     <!-- App Logo -->
     <ImageView
@@ -88,18 +121,6 @@
             android:paddingStart="16dp"
             android:paddingEnd="16dp" />
 
-        <!-- Username Error Message -->
-        <TextView
-            android:id="@+id/usernameErrorTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/holo_red_dark"
-            android:visibility="gone"
-            android:fontFamily="@font/poppins_regular"
-            tools:text="Username error message"
-            android:textSize="14sp"
-            tools:visibility="visible"/>
-
         <!-- Password Label -->
         <TextView
             android:layout_width="wrap_content"
@@ -129,25 +150,13 @@
             android:paddingStart="16dp"
             android:paddingEnd="16dp" />
 
-        <!-- Password Error Message -->
-        <TextView
-            android:id="@+id/passwordErrorTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/holo_red_dark"
-            android:visibility="gone"
-            android:fontFamily="@font/poppins_regular"
-            tools:text="Password error message"
-            android:textSize="14sp"
-            tools:visibility="visible"/>
-
         <!-- Login Button -->
         <Button
             android:id="@+id/loginButton"
             android:layout_width="160dp"
             android:layout_height="65dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="90dp"
             android:backgroundTint="#FF6F61"
             android:fontFamily="@font/poppins_bold"
             android:text="Log In"
