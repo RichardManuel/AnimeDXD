@@ -1,6 +1,7 @@
 package com.example.animedxd;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
@@ -66,7 +67,11 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        redirectToHomePage(username);
+        loginButton.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#6B7829")));
+
+        new Handler().postDelayed(() -> {
+            redirectToHomePage(username);
+        }, 500);
     }
 
     private boolean validateUsername(String username) {
