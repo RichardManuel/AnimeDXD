@@ -1,14 +1,15 @@
 package com.example.animedxd;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.graphics.Rect;
 
 public class AboutActivity extends AppCompatActivity {
 
@@ -22,14 +23,11 @@ public class AboutActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
 
-        // Inisialisasi UI
         welcomeTextView = findViewById(R.id.welcomeTextView);
         menuLayout = findViewById(R.id.menu_layout);
         logoutButton = findViewById(R.id.logout_button);
         rootLayout = findViewById(R.id.root_layout);
 
-        // --- Mengambil dan Menampilkan Username ---
-        // Syarat: Greeting message to display “Welcome, [Username]”
         String username = getIntent().getStringExtra("USERNAME");
         if (username != null && !username.isEmpty()) {
             welcomeTextView.setText("Welcome, " + username + " !");
@@ -37,13 +35,10 @@ public class AboutActivity extends AppCompatActivity {
             welcomeTextView.setText("Welcome, User !");
         }
 
-        // --- Setup Menu Logout ---
-        // Syarat: Menu is used to show a list of menus that users can access
         setupLogoutMenu();
     }
 
     private void setupLogoutMenu() {
-        // Listener untuk menampilkan/menyembunyikan tombol logout
         menuLayout.setOnClickListener(v -> {
             if (logoutButton.getVisibility() == View.VISIBLE) {
                 logoutButton.setVisibility(View.GONE);
@@ -52,21 +47,29 @@ public class AboutActivity extends AppCompatActivity {
             }
         });
 
-        // Listener untuk tombol logout
         logoutButton.setOnClickListener(v -> {
-            // Pindah kembali ke LoginActivity
             Intent intent = new Intent(AboutActivity.this, LoginActivity.class);
-            // Membersihkan semua activity sebelumnya dari stack
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
-            finish(); // Tutup AboutActivity
+            finish();
         });
+    }
 
-        // Syarat: Hide the menu dropdown if the user clicks on another area
-        rootLayout.setOnClickListener(v -> {
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent event) {
+        if (event.getAction() == MotionEvent.ACTION_DOWN) {
             if (logoutButton.getVisibility() == View.VISIBLE) {
-                logoutButton.setVisibility(View.GONE);
+                Rect outRect = new Rect();
+                logoutButton.getGlobalVisibleRect(outRect);
+                Rect menuRect = new Rect();
+                menuLayout.getGlobalVisibleRect(menuRect);
+
+                if (!outRect.contains((int) event.getRawX(), (int) event.getRawY()) &&
+                        !menuRect.contains((int) event.getRawX(), (int) event.getRawY())) {
+                    logoutButton.setVisibility(View.GONE);
+                }
             }
-        });
+        }
+        return super.dispatchTouchEvent(event);
     }
 }
