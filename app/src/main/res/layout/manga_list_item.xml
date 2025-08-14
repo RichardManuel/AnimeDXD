@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="280dp">
+
+        <ImageView
+            android:id="@+id/imageView_manga_cover"
+            android:layout_width="0dp"
+            android:layout_height="190dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="Manga Cover"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Overlay gradient menutupi bagian bawah gambar -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@drawable/gradient_white_transparent"
+            app:layout_constraintBottom_toBottomOf="@id/imageView_manga_cover"
+            app:layout_constraintEnd_toEndOf="@id/imageView_manga_cover"
+            app:layout_constraintStart_toStartOf="@id/imageView_manga_cover" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/imageView_manga_cover">
+
+            <!-- TextView baru untuk teks di atas judul -->
+            <TextView
+                android:id="@+id/textView_extra_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Informasi Tambahan"
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="10sp"/>
+
+            <TextView
+                android:id="@+id/textView_manga_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Judul Manga"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:fontFamily="@font/poppins_bold"/>
+
+            <TextView
+                android:id="@+id/textView_manga_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:text="Deskripsi singkat manga."
+                android:textColor="@color/black"
+                android:fontFamily="@font/poppins_regular"
+                android:textSize="10sp"
+                android:maxLines="2"
+                android:ellipsize="end"/>
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

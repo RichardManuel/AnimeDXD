@@ -20,6 +20,7 @@ import android.graphics.drawable.ColorDrawable;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class DetailActivity extends AppCompatActivity {
 
     private ImageButton backButton;

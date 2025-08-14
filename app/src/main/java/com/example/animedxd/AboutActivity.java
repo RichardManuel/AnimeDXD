@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import android.graphics.Rect;
 
 public class AboutActivity extends AppCompatActivity {
@@ -30,9 +31,9 @@ public class AboutActivity extends AppCompatActivity {
 
         String username = getIntent().getStringExtra("USERNAME");
         if (username != null && !username.isEmpty()) {
-            welcomeTextView.setText("Welcome, " + username + " !");
+            welcomeTextView.setText("Welcome, " + username + "!");
         } else {
-            welcomeTextView.setText("Welcome, User !");
+            welcomeTextView.setText(R.string.welcome_home);
         }
 
         setupLogoutMenu();
@@ -69,6 +70,36 @@ public class AboutActivity extends AppCompatActivity {
                     logoutButton.setVisibility(View.GONE);
                 }
             }
+        }
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
+        if (bottomNavigationView == null) {
+            System.err.println("ERROR: bottomNavigationView is null. Check R.id.bottomNavigation in activity_list.xml");
+        } else {
+            // Set item aktif ke 'Book'
+            bottomNavigationView.setSelectedItemId(R.id.bottom_about);
+
+            // Listener ketika item diklik
+            bottomNavigationView.setOnItemSelectedListener(item -> {
+                int itemId = item.getItemId();
+
+                if (itemId == R.id.bottom_home) {
+                    startActivity(new Intent(AboutActivity.this, MainActivity.class));
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    finish();
+                    return true;
+
+                } else if (itemId == R.id.bottom_book) {
+                    startActivity(new Intent(AboutActivity.this, ListActivity.class));
+                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                    finish();
+                    return true;
+
+                } else if (itemId == R.id.bottom_about) {
+                    return true;
+                }
+                return false;
+            });
         }
         return super.dispatchTouchEvent(event);
     }

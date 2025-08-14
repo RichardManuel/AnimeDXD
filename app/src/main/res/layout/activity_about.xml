@@ -29,14 +29,14 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="8dp"
+                android:text="@string/welcome_home"
                 android:textColor="@android:color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/poppins_bold"
                 app:layout_constraintEnd_toStartOf="@+id/menu_layout"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Welcome, User !" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <!-- Menu Logout Layout dengan alignment yang sudah diperbaiki -->
             <LinearLayout
@@ -321,5 +321,22 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bottom_background"
+        android:elevation="20dp"
+        android:layout_gravity="bottom"
+        app:itemIconSize="40dp"
+        app:itemIconTint="@drawable/item_selector"
+        app:itemRippleColor="@android:color/transparent"
+        app:itemTextColor="@drawable/item_selector"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_menu" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -26,4 +26,7 @@
     <string name="list_card7_genre">Isekai</string>
     <string name="list_card7_desc">Having full conscious in a shutdowned VR game, Ainz Ooal Gown explores the world to control it with his NPC companions.</string>
     <string name="button_desc">button</string>
+    <string name="welcome_home">Welcome, User!!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
