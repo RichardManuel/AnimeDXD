@@ -83,7 +83,7 @@ public class DetailActivity extends AppCompatActivity {
         animeDatabase.put("aot", new AnimeData(
                 "Attack on Titan",
                 "Action, Dark Fantasy",
-                "Beberapa ratus tahun yang lalu, manusia hampir punah oleh raksasa yang mengerikan, 'Titan.' Manusia yang tersisa berlindung di dalam kota yang dikelilingi oleh tembok sangat tinggi. Tetapi ketenangan itu tak berlangsung lama...",
+                "A post-apocalyptic anime series set in a world where humanity lives behind three massive walls to protect themselves from man-eating Titans.",
                 4.9,
                 R.drawable.aot // Ganti dengan nama drawable yang benar
         ));
@@ -92,7 +92,7 @@ public class DetailActivity extends AppCompatActivity {
         animeDatabase.put("hxh", new AnimeData(
                 "Hunter x Hunter",
                 "Adventure, Fantasy",
-                "Gon Freecss, seorang anak laki-laki yang tinggal di Pulau Paus, memutuskan untuk menjadi Hunter untuk menemukan ayahnya yang seorang Hunter legendaris.",
+                "Gon Freecss aspires to become a Hunter, an exceptional being capable of greatness. With his friends and his potential, he seeks out his father, who left him when he was younger.",
                 4.7,
                 R.drawable.hxh // Ganti dengan nama drawable yang benar
         ));
@@ -101,7 +101,7 @@ public class DetailActivity extends AppCompatActivity {
         animeDatabase.put("gintama", new AnimeData(
                 "Gintama",
                 "Sci-fi, Comedy, Samurai",
-                "Dunia diinvasi oleh alien Amanto. Dengan larangan membawa pedang, Gintoki Sakata, mantan samurai, bekerja serabutan untuk bertahan hidup.",
+                "Gintoki Sakata, an eccentric samurai, and his odd-jobs business Yorozuya (万事屋) in a world where aliens have conquered Edo-period Japan.",
                 4.8,
                 R.drawable.gintama // Ganti dengan nama drawable yang benar
         ));
@@ -110,7 +110,7 @@ public class DetailActivity extends AppCompatActivity {
         animeDatabase.put("love_is_war", new AnimeData(
                 "Kaguya-sama: Love Is War",
                 "Romance, Comedy",
-                "Dua siswa terpintar di sekolah, Kaguya dan Miyuki, terlibat dalam perang psikologis untuk membuat satu sama lain mengakui perasaan cintanya.",
+                "Two brilliant and wealthy member of student council who both harbor feelings for each other but are too proud to confess.",
                 4.6,
                 R.drawable.love_is_war // Ganti dengan nama drawable yang benar
         ));
@@ -118,7 +118,7 @@ public class DetailActivity extends AppCompatActivity {
         animeDatabase.put("the_witch_from_mercury", new AnimeData(
                 "Gundam: The Witch from Mercury",
                 "Mecha, Sci-fi",
-                "Seorang gadis dari planet Merkurius, Suletta Mercury, pindah ke Akademi Asticassia dan memulai petualangan dengan Gundam miliknya.",
+                "A compassionate girl enrolls herself in the Asticassia School of Technology in Planet Mercury that is run by the Beneritt Group that creates robotic mobile suits.",
                 4.9,
                 R.drawable.the_witch_from_mercury // Ganti dengan nama drawable yang benar
         ));
@@ -126,7 +126,7 @@ public class DetailActivity extends AppCompatActivity {
         animeDatabase.put("the_misfit_of_demon_king", new AnimeData(
                 "The Misfit of Demon King Academy",
                 "Action, Fantasy",
-                "Anos Voldigoad, Demon King yang bereinkarnasi, mendaftar di akademi yang didirikan untuk melatih Demon King. Namun, ia dianggap sebagai 'misfit' karena kekuatannya yang tak tertandingi.",
+                "Anos Voldigoad, the Demon King of Tyranny, who, after defeating countless enemies and tiring of war, reincarnates to find peace two millennia later.",
                 4.8,
                 R.drawable.demon_king_academy // Ganti dengan nama drawable yang benar
         ));
@@ -134,7 +134,7 @@ public class DetailActivity extends AppCompatActivity {
         animeDatabase.put("overlord", new AnimeData(
                 "Overlord",
                 "Fantasy, Isekai",
-                "Seorang pemain game terjebak di dunia virtual reality game 'Yggdrasil' sebagai karakter andalannya, Momonga, dan memutuskan untuk menaklukkan dunia baru ini.",
+                "Having full conscious in a shutdowned VR game, Ainz Ooal Gown explores the world to control it with his NPC companions.",
                 4.7,
                 R.drawable.overlord // Ganti dengan nama drawable yang benar
         ));
