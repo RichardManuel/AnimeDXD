@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="lavender">#8692f7</color>
     <color name="grey">#D4D4D4</color>
+    <color name="dark_grey">#808080</color>
     <color name="red_action">#CD5C5C</color>
     <color name="green_adventure">#86B049</color>
     <color name="yellow_comedy">#E3C565</color>
@@ -19,4 +20,5 @@
     <color name="olive_green">#808000</color>
     <color name="coral_red">#F08080</color>
     <color name="cream_beige">#F5F5DC</color>
+
 </resources>

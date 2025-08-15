@@ -32,22 +32,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigation"
-        android:layout_width="match_parent"
-        android:layout_height="72dp"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/bottom_background"
-        app:itemIconSize="40dp"
-        app:itemIconTint="@drawable/item_selector"
-        app:itemRippleColor="@android:color/transparent"
-        app:itemTextColor="@drawable/item_selector"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="20dp"
-        android:elevation="20dp"
-        app:menu="@menu/bottom_menu" />
-
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="481dp"
@@ -629,6 +613,91 @@
         app:strokeColor="#E0E0E0"
         app:strokeWidth="1dp"
         tools:visibility="visible" />
+
+    <LinearLayout
+        android:id="@+id/customBottomNav"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:background="@drawable/bottom_background"
+        android:gravity="center"
+        android:paddingHorizontal="10dp"
+        android:layout_marginBottom="25dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:elevation="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:fontFamily="@font/poppins_bold">
+
+        <LinearLayout
+            android:id="@+id/nav_list"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/nav_list_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/bookicon" />
+
+            <TextView
+                android:id="@+id/nav_list_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="List"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/nav_home"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/nav_home_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/homeicon"/>
+
+            <TextView
+                android:id="@+id/nav_home_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/nav_about"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/nav_about_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/abouticon" />
+
+            <TextView
+                android:id="@+id/nav_about_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="About"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+    </LinearLayout>
 
 
 

@@ -1,65 +1,80 @@
 package com.example.animedxd;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.graphics.Rect;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.tabs.TabLayout;
-import com.google.android.material.tabs.TabLayoutMediator;
 
 public class MainActivity extends AppCompatActivity {
 
     private ViewPager2 viewPager;
-    private BottomNavigationView bottomNavigation;
-
-    // Tambahkan referensi untuk TextView
     private TextView buttonNews;
     private TextView buttonMangaList;
-    private TextView welcomeTextView; // Deklarasi TextView baru untuk welcome message
+    private TextView welcomeTextView;
 
-    // Tambahkan referensi untuk menu logout
     private LinearLayout menuLayout;
     private Button logoutButton;
+
+    // Custom Bottom Nav
+    private LinearLayout navList, navHome, navAbout;
+    private ImageView navListIcon, navHomeIcon, navAboutIcon;
+    private TextView navListText, navHomeText, navAboutText;
+
+    private String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Inisialisasi View
+        // Tab button
         buttonNews = findViewById(R.id.buttonNews);
         buttonMangaList = findViewById(R.id.buttonMangaList);
         viewPager = findViewById(R.id.viewPager);
-        bottomNavigation = findViewById(R.id.bottomNavigation);
-        welcomeTextView = findViewById(R.id.titlePage); // Inisialisasi TextView welcome
+        welcomeTextView = findViewById(R.id.titlePage);
 
-        // Inisialisasi komponen menu logout
+        // Logout menu
         menuLayout = findViewById(R.id.menu_layout);
         logoutButton = findViewById(R.id.logout_button);
 
-        // Mengambil username dari Intent
-        String username = getIntent().getStringExtra("USERNAME");
+        // Custom bottom navigation
+        navList = findViewById(R.id.nav_list);
+        navHome = findViewById(R.id.nav_home);
+        navAbout = findViewById(R.id.nav_about);
+
+        // Ikon dan Teks Navigasi
+        navListIcon = findViewById(R.id.nav_list_icon);
+        navHomeIcon = findViewById(R.id.nav_home_icon);
+        navAboutIcon = findViewById(R.id.nav_about_icon);
+        navListText = findViewById(R.id.nav_list_text);
+        navHomeText = findViewById(R.id.nav_home_text);
+        navAboutText = findViewById(R.id.nav_about_text);
+
+        // Ambil username
+        username = getIntent().getStringExtra("USERNAME");
         if (username != null && !username.isEmpty()) {
             welcomeTextView.setText("Welcome, " + username + "!");
         } else {
             welcomeTextView.setText(R.string.welcome_home);
         }
 
-        // Membuat adapter untuk ViewPager
+        // ViewPager setup
         MyPagerAdapter pagerAdapter = new MyPagerAdapter(this);
         viewPager.setAdapter(pagerAdapter);
+        viewPager.setUserInputEnabled(false);
 
-        // Tambahkan listener untuk klik tombol
         buttonNews.setOnClickListener(v -> {
             viewPager.setCurrentItem(0);
             updateButtonState(0);
@@ -70,57 +85,56 @@ public class MainActivity extends AppCompatActivity {
             updateButtonState(1);
         });
 
-        // Listener untuk sinkronisasi ViewPager ke tombol
         viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
-                super.onPageSelected(position);
                 updateButtonState(position);
             }
         });
 
-        // Set tombol awal aktif
         updateButtonState(0);
 
-        // Inisialisasi BottomNavigationView
-        if (bottomNavigation == null) {
-            System.err.println("ERROR: bottomNavigationView is null. Check R.id.bottomNavigation in activity_main.xml");
-        } else {
-            bottomNavigation.setSelectedItemId(R.id.bottom_home);
-            bottomNavigation.setOnItemSelectedListener(item -> {
-                int itemId = item.getItemId();
-                if (itemId == R.id.bottom_home) {
-                    return true;
-                } else if (itemId == R.id.bottom_book) {
-                    startActivity(new Intent(MainActivity.this, ListActivity.class));
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                    finish();
-                    return true;
-                } else if (itemId == R.id.bottom_about) {
-                    startActivity(new Intent(MainActivity.this, AboutActivity.class));
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                    finish();
-                    return true;
-                }
-                return false;
-            });
-        }
+        // Custom bottom navigation click
+        navHome.setOnClickListener(v -> {
+            // Sudah di Home, set warna menjadi aktif
+            updateBottomNavState("home");
+        });
 
-        // Setup menu logout
-        if (menuLayout != null && logoutButton != null) {
-            setupLogoutMenu();
-        } else {
-            System.err.println("ERROR: Not calling setupLogoutMenu() due to missing UI components.");
-        }
+        navList.setOnClickListener(v -> {
+            updateBottomNavState("list");
+            Intent intent = new Intent(MainActivity.this, ListActivity.class);
+            if (username != null) {
+                intent.putExtra("USERNAME", username);
+            }
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            // Hapus finish() di sini
+        });
+
+        navAbout.setOnClickListener(v -> {
+            updateBottomNavState("about");
+            Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+            if (username != null) {
+                intent.putExtra("USERNAME", username);
+            }
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            // Hapus finish() di sini
+        });
+
+
+        // Set state awal navigasi saat pertama kali masuk
+        updateBottomNavState("home");
+
+        // Logout menu setup
+        setupLogoutMenu();
     }
 
     private void setupLogoutMenu() {
         menuLayout.setOnClickListener(v -> {
-            if (logoutButton.getVisibility() == View.VISIBLE) {
-                logoutButton.setVisibility(View.GONE);
-            } else {
-                logoutButton.setVisibility(View.VISIBLE);
-            }
+            logoutButton.setVisibility(
+                    logoutButton.getVisibility() == View.VISIBLE ? View.GONE : View.VISIBLE
+            );
         });
 
         logoutButton.setOnClickListener(v -> {
@@ -134,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            if (logoutButton != null && menuLayout != null && logoutButton.getVisibility() == View.VISIBLE) {
+            if (logoutButton.getVisibility() == View.VISIBLE) {
                 Rect outRect = new Rect();
                 logoutButton.getGlobalVisibleRect(outRect);
                 Rect menuRect = new Rect();
@@ -160,6 +174,35 @@ public class MainActivity extends AppCompatActivity {
             buttonNews.setTextColor(getResources().getColor(R.color.black, null));
             buttonMangaList.setBackgroundResource(R.drawable.tab_background_selected);
             buttonMangaList.setTextColor(getResources().getColor(R.color.white, null));
+        }
+    }
+
+    private void updateBottomNavState(String activeNav) {
+        int activeColor = ContextCompat.getColor(this, R.color.black);
+        int inactiveColor = ContextCompat.getColor(this, R.color.dark_grey); // Pastikan warna gray sudah didefinisikan
+
+        // Reset semua item menjadi tidak aktif
+        navListIcon.setColorFilter(inactiveColor, PorterDuff.Mode.SRC_IN);
+        navListText.setTextColor(inactiveColor);
+        navHomeIcon.setColorFilter(inactiveColor, PorterDuff.Mode.SRC_IN);
+        navHomeText.setTextColor(inactiveColor);
+        navAboutIcon.setColorFilter(inactiveColor, PorterDuff.Mode.SRC_IN);
+        navAboutText.setTextColor(inactiveColor);
+
+        // Set item yang aktif
+        switch (activeNav) {
+            case "home":
+                navHomeIcon.setColorFilter(activeColor, PorterDuff.Mode.SRC_IN);
+                navHomeText.setTextColor(activeColor);
+                break;
+            case "list":
+                navListIcon.setColorFilter(activeColor, PorterDuff.Mode.SRC_IN);
+                navListText.setTextColor(activeColor);
+                break;
+            case "about":
+                navAboutIcon.setColorFilter(activeColor, PorterDuff.Mode.SRC_IN);
+                navAboutText.setTextColor(activeColor);
+                break;
         }
     }
 }

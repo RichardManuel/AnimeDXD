@@ -1,25 +1,31 @@
 package com.example.animedxd;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
+import android.graphics.Rect;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.view.MotionEvent;
-import android.graphics.Rect;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-
-
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import androidx.core.content.ContextCompat;
 
 public class ListActivity extends AppCompatActivity {
 
     private LinearLayout menuLayout;
     private Button logoutButton;
     private ConstraintLayout rootListLayout;
+    private String username;
+
+    // Custom Bottom Nav
+    private LinearLayout navList, navHome, navAbout;
+    private ImageView navListIcon, navHomeIcon, navAboutIcon;
+    private TextView navListText, navHomeText, navAboutText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,44 +36,52 @@ public class ListActivity extends AppCompatActivity {
         logoutButton = findViewById(R.id.logout_button);
         rootListLayout = findViewById(R.id.root_layout);
 
-        if (menuLayout == null) {
-            System.err.println("ERROR: menuLayout is null. Check R.id.menu_layout in activity_list.xml");
-        }
-        if (logoutButton == null) {
-            System.err.println("ERROR: logoutButton is null. Check R.id.logout_button in activity_list.xml");
-        }
-        if (rootListLayout == null) {
-            System.err.println("ERROR: rootListLayout is null. Check R.id.root_layout in activity_list.xml");
-        }
+        // Custom bottom navigation
+        navList = findViewById(R.id.nav_list);
+        navHome = findViewById(R.id.nav_home);
+        navAbout = findViewById(R.id.nav_about);
 
+        // Ikon dan Teks Navigasi
+        navListIcon = findViewById(R.id.nav_list_icon);
+        navHomeIcon = findViewById(R.id.nav_home_icon);
+        navAboutIcon = findViewById(R.id.nav_about_icon);
+        navListText = findViewById(R.id.nav_list_text);
+        navHomeText = findViewById(R.id.nav_home_text);
+        navAboutText = findViewById(R.id.nav_about_text);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigation);
-        if (bottomNavigationView == null) {
-            System.err.println("ERROR: bottomNavigationView is null. Check R.id.bottomNavigation in activity_list.xml");
-        } else {
-            bottomNavigationView.setSelectedItemId(R.id.bottom_book);
+        // Mengambil username dari Intent
+        username = getIntent().getStringExtra("USERNAME");
 
-            bottomNavigationView.setOnItemSelectedListener(item -> {
-                int itemId = item.getItemId();
+        // Set state awal navigasi saat pertama kali masuk ke ListActivity
+        updateBottomNavState("list");
 
-                if (itemId == R.id.bottom_home) {
-                    startActivity(new Intent(ListActivity.this, MainActivity.class));
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                    finish();
-                    return true;
+        // Custom bottom navigation click listeners
+        navHome.setOnClickListener(v -> {
+            updateBottomNavState("home");
+            Intent intent = new Intent(ListActivity.this, MainActivity.class);
+            if (username != null) {
+                intent.putExtra("USERNAME", username);
+            }
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            // Hapus finish() di sini
+        });
 
-                } else if (itemId == R.id.bottom_book) {
-                    return true;
+        navList.setOnClickListener(v -> {
+            // Sudah di ListActivity, tidak perlu berpindah
+            updateBottomNavState("list");
+        });
 
-                } else if (itemId == R.id.bottom_about) {
-                    startActivity(new Intent(ListActivity.this, AboutActivity.class));
-                    overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                    finish();
-                    return true;
-                }
-                return false;
-            });
-        }
+        navAbout.setOnClickListener(v -> {
+            updateBottomNavState("about");
+            Intent intent = new Intent(ListActivity.this, AboutActivity.class);
+            if (username != null) {
+                intent.putExtra("USERNAME", username);
+            }
+            startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            // Hapus finish() di sini
+        });
 
         if (menuLayout != null && logoutButton != null && rootListLayout != null) {
             setupLogoutMenu();
@@ -91,12 +105,6 @@ public class ListActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         });
-
-        rootListLayout.setOnClickListener(v -> {
-            if (logoutButton.getVisibility() == View.VISIBLE) {
-                logoutButton.setVisibility(View.GONE);
-            }
-        });
     }
 
     @Override
@@ -116,6 +124,7 @@ public class ListActivity extends AppCompatActivity {
         }
         return super.dispatchTouchEvent(event);
     }
+
     private void navigateToDetail(String itemId) {
         Intent intent = new Intent(ListActivity.this, DetailActivity.class);
         intent.putExtra("ITEM_ID", itemId);
@@ -148,5 +157,35 @@ public class ListActivity extends AppCompatActivity {
 
     public void openDetailPageOverlord(View view) {
         navigateToDetail("overlord");
+    }
+
+    // Metode untuk mengatur warna bottom navigation
+    private void updateBottomNavState(String activeNav) {
+        int activeColor = ContextCompat.getColor(this, R.color.black);
+        int inactiveColor = ContextCompat.getColor(this, R.color.dark_grey);
+
+        // Reset semua item menjadi tidak aktif
+        navListIcon.setColorFilter(inactiveColor, PorterDuff.Mode.SRC_IN);
+        navListText.setTextColor(inactiveColor);
+        navHomeIcon.setColorFilter(inactiveColor, PorterDuff.Mode.SRC_IN);
+        navHomeText.setTextColor(inactiveColor);
+        navAboutIcon.setColorFilter(inactiveColor, PorterDuff.Mode.SRC_IN);
+        navAboutText.setTextColor(inactiveColor);
+
+        // Set item yang aktif
+        switch (activeNav) {
+            case "home":
+                navHomeIcon.setColorFilter(activeColor, PorterDuff.Mode.SRC_IN);
+                navHomeText.setTextColor(activeColor);
+                break;
+            case "list":
+                navListIcon.setColorFilter(activeColor, PorterDuff.Mode.SRC_IN);
+                navListText.setTextColor(activeColor);
+                break;
+            case "about":
+                navAboutIcon.setColorFilter(activeColor, PorterDuff.Mode.SRC_IN);
+                navAboutText.setTextColor(activeColor);
+                break;
+        }
     }
 }

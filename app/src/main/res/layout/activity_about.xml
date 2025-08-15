@@ -16,29 +16,30 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-        android:paddingBottom="24dp">
+        android:paddingBottom="125dp"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/welcomeTextView"
+                android:id="@+id/usernameTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="8dp"
-                android:text="@string/welcome_home"
                 android:textColor="@android:color/black"
                 android:textSize="24sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/poppins_bold"
                 app:layout_constraintEnd_toStartOf="@+id/menu_layout"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Welcome, User !" />
 
-            <!-- Menu Logout Layout dengan alignment yang sudah diperbaiki -->
             <LinearLayout
                 android:id="@+id/menu_layout"
                 android:layout_width="wrap_content"
@@ -48,16 +49,8 @@
                 android:padding="8dp"
                 android:layout_marginEnd="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/welcomeTextView"
-                app:layout_constraintBottom_toBottomOf="@id/welcomeTextView">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/poppins_bold"
-                    android:textColor="@android:color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                app:layout_constraintTop_toTopOf="@id/usernameTextView"
+                app:layout_constraintBottom_toBottomOf="@id/usernameTextView">
 
                 <ImageView
                     android:id="@+id/dropdown_arrow"
@@ -92,7 +85,7 @@
                 android:layout_marginTop="32dp"
                 android:src="@drawable/animedxdlogo"
                 android:contentDescription="App Logo"
-                app:layout_constraintTop_toBottomOf="@id/welcomeTextView"
+                app:layout_constraintTop_toBottomOf="@id/usernameTextView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
@@ -152,7 +145,6 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintWidth_percent="0.9">
 
-                <!-- Kartu 1: Browse Library -->
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -190,7 +182,6 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- Kartu 2: Explore Details -->
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -226,7 +217,6 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- Kartu 3: Read Manga & News -->
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -262,7 +252,6 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <!-- Kartu 4: Login & Personalize -->
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -291,16 +280,13 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Securely log in and customize your  favorites and history."
+                            android:text="Securely log in and customize your  favorites and history."
                             android:gravity="center"
                             android:fontFamily="@font/poppins_regular"
                             android:textSize="12sp"/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
-
             </GridLayout>
-
-            <!-- Thank You Message -->
             <TextView
                 android:id="@+id/thankYouTextView"
                 android:layout_width="0dp"
@@ -317,26 +303,91 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/features_grid" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigation"
+    <LinearLayout
+        android:id="@+id/customBottomNav"
         android:layout_width="match_parent"
-        android:layout_height="72dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
         android:background="@drawable/bottom_background"
+        android:gravity="center"
+        android:paddingHorizontal="10dp"
+        android:layout_marginBottom="25dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:elevation="20dp"
-        android:layout_gravity="bottom"
-        app:itemIconSize="40dp"
-        app:itemIconTint="@drawable/item_selector"
-        app:itemRippleColor="@android:color/transparent"
-        app:itemTextColor="@drawable/item_selector"
-        app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/bottom_menu" />
+        android:fontFamily="@font/poppins_bold"
+        android:layout_gravity="bottom">
+
+        <LinearLayout
+            android:id="@+id/nav_list"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/nav_list_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/bookicon" />
+
+            <TextView
+                android:id="@+id/nav_list_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="List"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/nav_home"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/nav_home_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/homeicon"/>
+
+            <TextView
+                android:id="@+id/nav_home_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/nav_about"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/nav_about_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/abouticon" />
+
+            <TextView
+                android:id="@+id/nav_about_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="About"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+    </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

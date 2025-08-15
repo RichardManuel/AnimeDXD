@@ -1,6 +1,9 @@
 package com.example.animedxd;
+
 import androidx.appcompat.app.AppCompatActivity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -20,6 +23,10 @@ public class LoginActivity extends AppCompatActivity {
     private TextView errorPopupTextView;
     private LinearLayout errorPopupLayout;
 
+    // Nama file SharedPreferences untuk menyimpan data
+    public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String USERNAME_KEY = "usernameKey";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +37,12 @@ public class LoginActivity extends AppCompatActivity {
         loginButton = findViewById(R.id.loginButton);
         errorPopupTextView = findViewById(R.id.errorPopupTextView);
         errorPopupLayout = findViewById(R.id.errorPopupLayout);
+
+        // Hapus SharedPreferences saat aplikasi dibuka
+        SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.remove(USERNAME_KEY);
+        editor.apply();
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +66,6 @@ public class LoginActivity extends AppCompatActivity {
         }, 2000);
     }
 
-
     private void changeButtonColorOnClick() {
         loginButton.getBackground().setColorFilter(Color.parseColor("#E55B50"), PorterDuff.Mode.SRC_ATOP);
         new Handler().postDelayed(() -> loginButton.getBackground().clearColorFilter(), 200);
@@ -70,6 +82,12 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setBackgroundTintList(ColorStateList.valueOf(Color.parseColor("#6B7829")));
 
         new Handler().postDelayed(() -> {
+            // Simpan username ke SharedPreferences setelah login berhasil
+            SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREFS, Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(USERNAME_KEY, username);
+            editor.apply();
+
             redirectToHomePage(username);
         }, 500);
     }
